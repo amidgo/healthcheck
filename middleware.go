@@ -18,7 +18,7 @@ func (f MiddlewareFunc) Pinger(p Pinger) Pinger {
 }
 
 func Wrap(p Pinger, middlewares ...Middleware) Pinger {
-	for i := len(middlewares); i > 0; i-- {
+	for i := len(middlewares) - 1; i >= 0; i-- {
 		p = middlewares[i].Pinger(p)
 	}
 
